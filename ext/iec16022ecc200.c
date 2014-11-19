@@ -810,8 +810,6 @@ static char *encmake(int l, unsigned char *s, int *lenp, char exact)
 				encoding[p++] = encchr[b];
 		}
 	}*/
-	while (p < 30 && p < l)
-		encoding[p++] = 'A';
 	while (p < l)
 		encoding[p++] = 'B';
 	encoding[p] = 0;
