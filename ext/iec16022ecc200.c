@@ -814,6 +814,18 @@ static char *encmake(int l, unsigned char *s, int *lenp, char exact)
 	return encoding;
 }
 
+void iec16022init(int *Wptr, int *Hptr, const char *barcode)
+{
+	if(Wptr == NULL || Hptr == NULL || barcode == NULL) return;
+	
+	int barcodelen = strlen(barcode) + 1;
+	struct ecc200matrix_s *matrix;
+	for (matrix = ecc200matrix; matrix->bytes < barcodelen; matrix++);
+	*Wptr = matrix->W;
+	*Hptr = matrix->H;	
+}
+
+
 /*
  * Main encoding function
  * Returns the grid (malloced) containing the matrix. L corner at 0,0.
