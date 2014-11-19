@@ -28,8 +28,6 @@
 #include <ctype.h>
 #include <string.h>
 #include <time.h>
-/*#include <popt.h>*/
-/*#include <malloc.h>*/
 #include "reedsol.h"
 #include "iec16022ecc200.h"
 
@@ -792,7 +790,7 @@ static char *encmake(int l, unsigned char *s, int *lenp, char exact)
 	}
 	encoding = safemalloc(l + 1);
 	p = 0;
-/*	{
+	{
 		char cur = E_ASCII;	// starts ASCII
 		while (p < l) {
 			int t, m = 0;
@@ -811,25 +809,9 @@ static char *encmake(int l, unsigned char *s, int *lenp, char exact)
 			while (p < l && m--)
 				encoding[p++] = encchr[b];
 		}
-	}*/
-	while (p < 10)
-		encoding[p++] = 'A';
-	while (p < l)
-		encoding[p++] = 'B';
+	}
 	encoding[p] = 0;
 	return encoding;
-}
-
-
-void iec16022init(int *Wptr, int *Hptr, const char *barcode)
-{
-	if(Wptr == NULL || Hptr == NULL || barcode == NULL) return;
-	
-	int barcodelen = strlen(barcode) + 1;
-	struct ecc200matrix_s *matrix;
-	for (matrix = ecc200matrix; matrix->bytes < barcodelen; matrix++);
-	*Wptr = matrix->W;
-	*Hptr = matrix->H;	
 }
 
 /*
