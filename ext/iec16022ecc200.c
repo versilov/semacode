@@ -813,7 +813,7 @@ static char *encmake(int l, unsigned char *s, int *lenp, char exact)
 		}
 	}*/
 	while (p < l)
-		encoding[p++] = 'b';
+		encoding[p++] = 'B';
 	encoding[p] = 0;
 	return encoding;
 }
