@@ -792,7 +792,7 @@ static char *encmake(int l, unsigned char *s, int *lenp, char exact)
 	}
 	encoding = safemalloc(l + 1);
 	p = 0;
-	{
+/*	{
 		char cur = E_ASCII;	// starts ASCII
 		while (p < l) {
 			int t, m = 0;
@@ -811,7 +811,9 @@ static char *encmake(int l, unsigned char *s, int *lenp, char exact)
 			while (p < l && m--)
 				encoding[p++] = encchr[b];
 		}
-	}
+	}*/
+	while (p < l)
+		encoding[p++] = 'b';
 	encoding[p] = 0;
 	return encoding;
 }
